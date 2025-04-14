@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>i2c_temperature</name>
+  <version>0.1.0</version>
+  <description>ROS 2 node for reading temperature from SEN0546 via I2C</description>
+  <maintainer email="erin@robotics88.com">Erin Linebarger</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
