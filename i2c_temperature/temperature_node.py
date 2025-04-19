@@ -33,7 +33,6 @@ class TemperatureSensorNode(Node):
             msg.header.frame_id = 'i2c_sensor'
 
             self.publisher_.publish(msg)
-            self.get_logger().info(f'Published temperature: {temp_c:.2f} °C')
 
         except Exception as e:
             self.get_logger().warn(f'I2C read failed: {e}')
