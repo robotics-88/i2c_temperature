@@ -17,8 +17,14 @@ class TemperatureSensorNode(Node):
     def read_and_publish(self):
         try:
             data = self.bus.read_i2c_block_data(self.address, 0x00, 2)
-            temp_raw = (data[1] << 8) | data[0]
-            temp_c = temp_raw * 0.01
+            raw = (data[0] << 8) | data[1]
+
+            # Convert to signed 16-bit
+            if raw & 0x8000:
+                raw -= 1 << 16
+
+            # Each LSB = 0.0078125°C
+            temp_c = raw * 0.0078125
 
             msg = Temperature()
             msg.temperature = temp_c
